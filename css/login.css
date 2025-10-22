@@ -1,0 +1,26 @@
+#main {
+    padding: 40px 20px;
+}
+
+
+form {
+    height: 200px;
+    padding: 20px;
+    background-color: #fbad18;
+    border: solid 2px black;
+    border-radius: 16px;
+
+}
+
+label {
+    padding: 16px 8px;
+}
+
+input {
+    padding: 4px;
+    border-radius: 8px;
+}
+
+#submit {
+    margin: 0 auto;
+}

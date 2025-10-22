@@ -1,19 +1,18 @@
+@font-face {
+    font-family: bitcount;
+    src: url("../font/BitcountGridSingle-VariableFont_CRSV\,ELSH\,ELXP\,slnt\,wght.ttf");
+}
+@font-face {
+    font-family: sofia;
+    src: url("../font/SofiaSans-VariableFont_wght.ttf");
+}
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: sofia, Arial, Helvetica, sans-serif;
 }
 body {
-    background-color: #8a8c8c;
-}
-a {
-    text-decoration: none;
-    color: black;
-}
-a:visited {
-    color: #dc662d;
-}
-a:active {
     background-color: #8a8c8c;
 }
 
@@ -26,6 +25,10 @@ header {
     height: 80px;
     background-color: #ffcd00;
     border-bottom: solid 2px black;
+}
+header p {
+    font-family: bitcount, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: x-large;
 }
 
 #burger {
@@ -61,6 +64,20 @@ li {
     height: 100vh;
     width: 100%;
 }
+
+a {
+    text-decoration: none;
+    color: black;
+}
+a:visited {
+    color: #dc662d;
+}
+a:active {
+    background-color: #8a8c8c;
+}
+
+
+
 
 
 #main {
