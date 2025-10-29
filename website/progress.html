@@ -25,12 +25,28 @@
             </div>
         </header>
         
-        <div id="main">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br><br>
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br><br>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br><br>
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <div class ="stats">
+            <div class="card">
+                <h2>Steps Today</h2>    
+                <p id="steps">0</p>
+
+                
+            </div>
+            <div class="card">
+                <h2>Current Streak</h2>
+                <p id="streak">0 days</p>
+            </div>
+            <div class="card">
+                <h2>Total Points</h2>
+                <p id="points">0</p>
+            </div>
         </div>
+
+        <div class="chart-container">
+            <h2>Points Over Time</h2>
+            <canvas id="pointsChart"></canvas>
+        </div>
+
 
         <footer>
             <small><em>Team Software Project @ MTU, Fall 2025</em></small>
