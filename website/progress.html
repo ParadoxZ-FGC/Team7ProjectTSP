@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./css/global.css">
+        <link rel="stylesheet" href="./css/progress.css">
         <script src="./js/global.js"></script>
         <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
         <title>Fitness Critters</title>
@@ -46,6 +46,38 @@
             <h2>Points Over Time</h2>
             <canvas id="pointsChart"></canvas>
         </div>
+
+        <script>
+            const ctx = document.getElementById('pointsChart').getContext('2d');
+            const pointsChart = new Chart(ctx, {
+                type: 'line', // Change to 'bar' or 'doughnut' if you like
+                data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], // X-axis labels
+                datasets: [{
+                    label: 'Points Earned',
+                    data: [10, 12, 8, 15, 20, 18, 25], // Your data
+                    borderColor: '#2a7ae2',
+                    backgroundColor: 'rgba(42, 122, 226, 0.2)',
+                    borderWidth: 2,
+                    tension: 0.3, // smooth curve
+                    fill: true
+                }]
+                },
+                options: {
+                scales: {
+                    y: {
+                    beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                    display: true,
+                    labels: { color: '#333' }
+                    }
+                }
+                }
+            });
+        </script>
 
 
         <footer>

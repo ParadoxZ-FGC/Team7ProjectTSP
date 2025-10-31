@@ -1,0 +1,142 @@
+@font-face {
+    font-family: bitcount;
+    src: url("../font/BitcountGridSingle-VariableFont_CRSV\,ELSH\,ELXP\,slnt\,wght.ttf");
+}
+@font-face {
+    font-family: sofia;
+    src: url("../font/SofiaSans-VariableFont_wght.ttf");
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sofia, Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #8a8c8c;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    height: 80px;
+    background-color: #ffcd00;
+    border-bottom: solid 2px black;
+}
+header p {
+    padding: 6px;
+    font-family: bitcount, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: x-large;
+}
+
+#burger {
+    margin: auto 0;
+    display: block;
+}
+#burger div {
+    width: 35px;
+    height: 4px;
+    background-color: black;
+    margin: 6px 0;
+}
+
+.open .menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #fbad18;
+}
+ul {
+    height: 100%;
+    width: 100vw;   
+    list-style: none;
+}
+li {
+    height: 80px;
+    width: 100vw;
+    margin-top: 16px;
+    text-align: center;
+}
+.menu {
+    display: none;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+}
+a {
+    width: 100vw;
+    height: 100%;
+    padding: 16px 0;
+    text-decoration: none;
+    color: black;
+    font-size: x-large;
+    transition: 0.2s ease-out;
+}
+a:visited {
+    color: #dc662d;
+}
+a:active {
+    background-color: #8a8c8c;
+}
+
+.container {
+  max-width: 800px;
+  width: 100%;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: #eaf3ff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 200px;
+  text-align: center;
+  margin: 10px;
+}
+
+.card h2 {
+  margin-bottom: 10px;
+  color: #2a7ae2;
+}
+
+.chart-container {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f9fbff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#main {
+    min-height: 80vh;
+    padding: 40px;
+}
+
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    align-content: center;
+    background-color: #dc662d;
+    border-top: solid 2px black;
+}
