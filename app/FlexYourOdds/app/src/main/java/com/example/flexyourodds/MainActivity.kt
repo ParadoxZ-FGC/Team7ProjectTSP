@@ -145,7 +145,7 @@ class MainActivity : Activity() {
             settings.loadWithOverviewMode = true
 
             // Load URL with deviceId parameter
-            val url = "https://caedenkidd.com/projects/fitness?deviceId=${URLEncoder.encode(deviceId, "UTF-8")}"
+            val url = "https://paradoxz-fgc.github.io/Team7ProjectTSP/?deviceId=${URLEncoder.encode(deviceId, "UTF-8")}"
             loadUrl(url)
             Log.d(TAG, "Loading URL: $url")
         }
