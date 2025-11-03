@@ -30,11 +30,10 @@
 
 .wedge {
     position: absolute;
-    width: 50%;
-    height: 50%;
-    transform-origin: 100% 100%; /* bottom right */
-    left: 0;
     top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -44,14 +43,22 @@
     overflow: hidden;
 }
 
+
 .wedge-content {
     position: absolute;
     text-align: center;
-    width: 100px;
-    transform-origin: center;
-    top: 30px;
-    left: 10px;
+    width: 50px;
+    height: 20px;
+
+    /* Center the text around the JS-calculated coordinate */
+    transform: translate(-50%, -50%) rotate(var(--angle));
+
+    font-size: 18px;
+    font-weight: bold;
+    pointer-events: none;
 }
+
+
 
 .wedge-points {
     font-size: 22px;
