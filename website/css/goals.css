@@ -1,7 +1,16 @@
-#main {
-    padding: 0;
+input {
+    padding: 6px;
+    background-color: #8a8c8c;
+    color: white;
+    border: inset 2px black;
+    border-radius: 10px;
+}
+#submit {
+    padding: 8px 16px;
+    font-size: x-large;
+    border-radius: 20px;
 }
 
 #map {
-    border: solid 4px #fbad18;
+    border: solid 6px #fbad18;
 }

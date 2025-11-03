@@ -4,7 +4,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./css/global.css">
+        <link rel="stylesheet" href="./css/goals.css">
         <script src="./js/global.js"></script>
+        <script src="./js/goals.js"></script>
         <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
         <title>Fitness Critters</title>
     </head>
@@ -26,20 +28,24 @@
         </header>
         
         <div id="main">
+            <h2>Goals Form</h2>
+            <hr>
+            <br>
             <form id="goalsForm">
-                <label for="name">What is your name? :</label>
-                <input type="text" id="n" name="name" size="16" required>
+                <label for="name">What is your name?</label><br>
+                <input type="text" name="name" id="name" size="16" required>
                 <br><br>
 
-                <label for="weight">What is your weight (in lbs)?</label>   
-                <input type="text" id="w" name="weight" size="16" required>
+                <label for="weight">What is your weight (in lbs)?</label><br>  
+                <input type="text" name="weight" id="weight" size="16" required>
                 <br><br>
 
-                <p>Sex?</p>
-                <label for="male">M</label>   
-                <input type="radio" id="m" name="male" value="M" required>
-                <label for="female">F</label>   
-                <input type="radio" id="f" name="female" value="F" required>
+                <label for="sex">Sex?</label><br>
+                <select name="sex" id="sex">
+                    <option></option>
+                    <option value="m">Male</option>
+                    <option value="f">Female</option>
+                </select>
                 <br><br>
 
                 <p>Use the map to select your gym</p>
@@ -47,33 +53,27 @@
                     <iframe width="100%" height="450" style="border:0" loading="lazy" allowfullscreen
                     src="https://www.google.com/maps/embed/v1/view?zoom=12&center=47.1211%2C-88.5694&key=AIzaSyAoDsK7lPq9XeO3ZvVt1xJO-i8FJnEW-MM"></iframe>
                 </div>
+                <br>
+
+                <label for="freq">How often do you want to work out?</label><br>
+                <select name="freq" id="freq">
+                    <option></option>
+                    <option value="12">1-2 days a week</option>
+                    <option value="35">3-5 days a week</option>
+                    <option value="67">6-7 days a week</option>
+                </select>
                 <br><br>
 
-                <p>How often do you want to work out?</p>
-                <label for="time1">1-2 days a week</label>
-                <input type="radio" id="time1" name="time1" value="12" required><br>
-                <label for="time2">3-5 days a week</label>
-                <input type="radio" id="time2" name="time2" value="35" required><br>
-                <label for="time3">6-7 days a week</label>
-                <input type="radio" id="time4" name="time3" value="67" required>
+                <label for="days">On what days do you want to work out?</label><br>
+                <input type="checkbox" name="days" id="monday" value="monday"><label for="monday"> Monday</label><br>
+                <input type="checkbox" name="days" id="tuesday" value="tuesday"><label for="tuesday"> Tuesday</label><br>
+                <input type="checkbox" name="days" id="wednesday" value="wednesday"><label for="wednesday"> Wednesday</label><br>
+                <input type="checkbox" name="days" id="thursday" value="thursday"><label for="thursday"> Thursday</label><br>
+                <input type="checkbox" name="days" id="friday" value="friday"><label for="friday"> Friday</label><br>
+                <input type="checkbox" name="days" id="saturday" value="saturday"><label for="saturday"> Saturday</label><br>
+                <input type="checkbox" name="days" id="sunday" value="sunday"><label for="sunday"> Sunday</label>
                 <br><br>
 
-                <p>On what days do you want to work out?</p>
-                <label for="monday">Monday</label>
-                <input type="checkbox" id="monday" name="monday" value="monday" required><br>
-                <label for="tuesday">Tuesday</label>
-                <input type="checkbox" id="tuesday" name="tuesday" value="tuesday" required><br>
-                <label for="wednesday">Wednesday</label>
-                <input type="checkbox" id="wednesday" name="wednesday" value="wednesday" required><br>
-                <label for="thursday">Thursday</label>
-                <input type="checkbox" id="thursday" name="thursday" value="thursday" required><br>
-                <label for="friday">Friday</label>
-                <input type="checkbox" id="friday" name="friday" value="friday" required><br>
-                <label for="saturday">Saturday</label>
-                <input type="checkbox" id="saturday" name="saturday" value="saturday" required><br>
-                <label for="sunday">Sunday</label>
-                <input type="checkbox" id="sunday" name="sunday" value="sunday" required>
-                <br><br>
                 <input type="submit" id="submit" value="Submit">
             </form>
         </div>
