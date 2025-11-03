@@ -84,12 +84,15 @@ function createWedges() {
         // Position text in the middle of the wedge
         const textAngle = (startAngle + endAngle) / 2;
         const textRad = (textAngle - 90) * Math.PI / 180;
-        const textX = 50 + 30 * Math.cos(textRad);
-        const textY = 50 + 30 * Math.sin(textRad);
-        
-        wedgeContent.style.left = `${textX - 25}%`;
-        wedgeContent.style.top = `${textY - 10}%`;
-        wedgeContent.style.transform = `rotate(${textAngle}deg)`;
+        const textX = 50 + 40 * Math.cos(textRad);
+        const textY = 50 + 40 * Math.sin(textRad);
+
+		wedgeContent.style.left = `${textX}%`;
+		wedgeContent.style.top = `${textY}%`;
+		wedgeContent.style.transform = `translate(-50%, -50%) rotate(${textAngle}deg)`;
+
+
+		
         
         const pointsElement = document.createElement('div');
         pointsElement.className = 'wedge-points';
@@ -177,6 +180,7 @@ function spinWheel() {
             // Animation complete
             resultDisplay.textContent = 
                 `You won: ${WEDGE_CONFIG[resultIndex].points} points!`;
+			
             isSpinning = false;
             spinButton.disabled = false;
             animationId = null;
