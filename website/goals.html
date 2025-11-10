@@ -1,85 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./css/global.css">
-        <link rel="stylesheet" href="./css/goals.css">
-        <script src="./js/global.js"></script>
-        <script src="./js/goals.js"></script>
-        <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
-        <title>Fitness Critters</title>
-    </head>
-    
-    <body>
-        <header>
-            <p>Fitness Critters</p>
-            <div id="burger" onclick="toggleMenu(this)">
-                <div class="bar1"></div>
-                <div class="bar2"></div>
-                <div class="bar3"></div>
-                <ul class="menu">
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="#">Goals</a></li>
-                    <li><a href="./progress.html">Progress</a></li>
-                    <li><a href="./gamba.html">Rewards</a></li>
-                </ul>
-            </div>
-        </header>
-        
-        <div id="main">
-            <h2>Goals Form</h2>
-            <hr>
-            <br>
-            <form id="goalsForm">
-                <label for="name">What is your name?</label><br>
-                <input type="text" name="name" id="name" size="16" required>
-                <br><br>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/goals.css">
+    <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
+    <title>Fitness Critters</title>
+    <script src="./js/global.js"></script>
+    <script src="./js/goals.js" defer></script>
+</head>
+<body>
+<header>
+    <p>Fitness Critters</p>
+    <div id="burger" onclick="toggleMenu(this)">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+        <ul class="menu">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="#">Goals</a></li>
+            <li><a href="./progress.html">Progress</a></li>
+            <li><a href="./gamba.html">Rewards</a></li>
+        </ul>
+    </div>
+</header>
 
-                <label for="weight">What is your weight (in lbs)?</label><br>  
-                <input type="text" name="weight" id="weight" size="16" required>
-                <br><br>
+<div id="main">
+    <h2>Goals Form</h2>
+    <hr><br>
+    <form id="goalsForm">
+        <label for="name">What is your name?</label><br>
+        <input type="text" name="name" id="name" size="16" required><br><br>
 
-                <label for="sex">Sex?</label><br>
-                <select name="sex" id="sex">
-                    <option></option>
-                    <option value="m">Male</option>
-                    <option value="f">Female</option>
-                </select>
-                <br><br>
+        <label for="weight">What is your weight (in lbs)?</label><br>
+        <input type="text" name="weight" id="weight" size="16" required><br><br>
 
-                <p>Use the map to select your gym</p>
-                <div id="map">
-                    <iframe width="100%" height="450" style="border:0" loading="lazy" allowfullscreen
-                    src="https://www.google.com/maps/embed/v1/view?zoom=12&center=47.1211%2C-88.5694&key=AIzaSyAoDsK7lPq9XeO3ZvVt1xJO-i8FJnEW-MM"></iframe>
-                </div>
-                <br>
+        <label for="sex">Sex?</label><br>
+        <select name="sex" id="sex" required>
+            <option value=""></option>
+            <option value="m">Male</option>
+            <option value="f">Female</option>
+        </select>
+        <br><br>
 
-                <label for="freq">How often do you want to work out?</label><br>
-                <select name="freq" id="freq">
-                    <option></option>
-                    <option value="12">1-2 days a week</option>
-                    <option value="35">3-5 days a week</option>
-                    <option value="67">6-7 days a week</option>
-                </select>
-                <br><br>
-
-                <label for="days">On what days do you want to work out?</label><br>
-                <input type="checkbox" name="days" id="monday" value="monday"><label for="monday"> Monday</label><br>
-                <input type="checkbox" name="days" id="tuesday" value="tuesday"><label for="tuesday"> Tuesday</label><br>
-                <input type="checkbox" name="days" id="wednesday" value="wednesday"><label for="wednesday"> Wednesday</label><br>
-                <input type="checkbox" name="days" id="thursday" value="thursday"><label for="thursday"> Thursday</label><br>
-                <input type="checkbox" name="days" id="friday" value="friday"><label for="friday"> Friday</label><br>
-                <input type="checkbox" name="days" id="saturday" value="saturday"><label for="saturday"> Saturday</label><br>
-                <input type="checkbox" name="days" id="sunday" value="sunday"><label for="sunday"> Sunday</label>
-                <br><br>
-
-                <input type="submit" id="submit" value="Submit">
-            </form>
+        <p>Your gym location (cannot be changed)</p>
+        <div id="map">
+            <iframe width="100%" height="450" style="border:0" loading="lazy" allowfullscreen
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAoDsK7lPq9XeO3ZvVt1xJO-i8FJnEW-MM&q=47.1125%2C-88.5465">
+            </iframe>
         </div>
-        
-        <footer>
-            <small><em>Team Software Project @ MTU, Fall 2025</em></small>
-        </footer>
-    </body>
+        <br>
+
+        <label for="freq">How often do you want to work out?</label><br>
+        <select name="freq" id="freq" required>
+            <option value=""></option>
+            <option value="12">1-2 days a week</option>
+            <option value="35">3-5 days a week</option>
+            <option value="67">6-7 days a week</option>
+        </select>
+        <br><br>
+
+        <label>On what days do you want to work out?</label><br>
+        <div id="dayCheckboxes">
+            <input type="checkbox" name="days" value="monday"> Monday<br>
+            <input type="checkbox" name="days" value="tuesday"> Tuesday<br>
+            <input type="checkbox" name="days" value="wednesday"> Wednesday<br>
+            <input type="checkbox" name="days" value="thursday"> Thursday<br>
+            <input type="checkbox" name="days" value="friday"> Friday<br>
+            <input type="checkbox" name="days" value="saturday"> Saturday<br>
+            <input type="checkbox" name="days" value="sunday"> Sunday
+        </div>
+        <br>
+
+        <input type="submit" id="submit" value="Submit">
+    </form>
+</div>
+
+<footer>
+    <small><em>Team Software Project @ MTU, Fall 2025</em></small>
+</footer>
+
+</body>
 </html>

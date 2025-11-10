@@ -1,61 +1,74 @@
+document.addEventListener('DOMContentLoaded', init);
 
-document.addEventListener('DOMContentLoaded', init, false);
-
-let name, weight, sex, freq, days;
+let nameInput, weightInput, sexInput, freqInput, dayInputs;
 
 function init() {
-    name = document.querySelector('#name');
-    weight = document.querySelector('#weight');
-    sex = document.querySelector('#sex');
-    //
-    freq = document.querySelector('#freq');
-    days = document.querySelectorAll('input[name=days]');
+    nameInput = document.querySelector('#name');
+    weightInput = document.querySelector('#weight');
+    sexInput = document.querySelector('#sex');
+    freqInput = document.querySelector('#freq');
+    dayInputs = Array.from(document.querySelectorAll('input[name="days"]'));
 
-    let elems = Array.from(document.querySelectorAll('#goalsForm input, #goalsForm select'));
-	elems.forEach(e => e.addEventListener('input', handleChange, false));
+    const formElems = Array.from(document.querySelectorAll('#goalsForm input, #goalsForm select'));
+    formElems.forEach(e => e.addEventListener('input', handleChange));
+
+    freqInput.addEventListener('change', enforceDayLimit);
+    dayInputs.forEach(cb => cb.addEventListener('change', enforceDayLimit));
 
     document.querySelector('#goalsForm').addEventListener('submit', () => {
-        window.localStorage.removeItem('form');
-    }, false);
+        localStorage.removeItem('form');
+    });
+
+    loadForm();
+    enforceDayLimit();
 }
 
-function handleChange(e) {
-	console.log('Handling change...');
+function enforceDayLimit() {
+    const freqVal = freqInput.value;
+    let maxDays = 7;
 
-	let form = {};
-	form.name = name.value;
-	form.weight = weight.value;
-	form.sex = sex.value;
-    //
-	form.freq = freq.value;
-	form.days = []; // either empty array or some things
-	cookies.forEach(d => {
-		if(d.checked) form.days.push(d.value);
-	});
-    
-	saveForm(form);
+    if (freqVal === '12') maxDays = 2;
+    else if (freqVal === '35') maxDays = 5;
+    else if (freqVal === '67') maxDays = 7;
+
+    const selected = dayInputs.filter(d => d.checked);
+    if (selected.length > maxDays) {
+        while (selected.length > maxDays) {
+            const last = selected.pop();
+            last.checked = false;
+        }
+    }
+
+    handleChange();
+}
+
+function handleChange() {
+    const form = {
+        name: nameInput.value,
+        weight: weightInput.value,
+        sex: sexInput.value,
+        freq: freqInput.value,
+        days: dayInputs.filter(d => d.checked).map(d => d.value)
+    };
+    saveForm(form);
 }
 
 function saveForm(form) {
-	let f = JSON.stringify(form);
-	window.localStorage.setItem('form', f);
-}
-function getForm() {
-	let f = window.localStorage.getItem('form');
-	if (f) return JSON.parse(f);
+    localStorage.setItem('form', JSON.stringify(form));
 }
 
-let cached = getForm();
-if(cached) {
-	name.value = cached.name;
-	weight.value = cached.weight;
-	sex.value = cached.inus;
-	//
-    freq.value = cached.comments;
-	if(cached.days) {
-		days.forEach(d => {
-			if(cached.days.includes(d.value)) d.checked = true;
-		});
-	}
-}
+function loadForm() {
+    const cached = localStorage.getItem('form');
+    if (!cached) return;
 
+    const data = JSON.parse(cached);
+
+    nameInput.value = data.name || '';
+    weightInput.value = data.weight || '';
+    sexInput.value = data.sex || '';
+    freqInput.value = data.freq || '';
+
+    if (data.days) {
+        dayInputs.forEach(d => d.checked = data.days.includes(d.value));
+    }
+}
