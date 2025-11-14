@@ -30,8 +30,6 @@
             <div class="card">
                 <h2>Points Today</h2>    
                 <p id="points">0</p>
-
-                
             </div>
             <div class="card">
                 <h2>Current Streak</h2>
@@ -49,37 +47,103 @@
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script>
-            const ctx = document.getElementById('pointsChart').getContext('2d');
-            const pointsChart = new Chart(ctx, {
-                type: 'line', // Change to 'bar' or 'doughnut' if you like
-                data: {
-                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], // X-axis labels
+<canvas id="pointsChart"></canvas>
+<div id="points"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+(async () => {
+    const deviceId = 'android_17853e41';
+    const detroitTz = 'America/Detroit';
+
+    // Step 1: Confirm location
+    try {
+        const confirmResponse = await fetch('https://caedenkidd.com/projects/fitness-project/check-location.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: `deviceId=${encodeURIComponent(deviceId)}`
+        });
+        const confirmData = await confirmResponse.json();
+        if (confirmData && confirmData.points !== undefined) {
+            document.getElementById('total').textContent = confirmData.points;
+            document.getElementById('points').textContent = confirmData.today_points;
+        }
+    } catch (err) {
+        console.error('Error confirming location:', err);
+    }
+
+    // Step 2: Get history
+    try {
+        const historyResponse = await fetch('https://caedenkidd.com/projects/fitness-project/get-history.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: `deviceId=${encodeURIComponent(deviceId)}`
+        });
+        const historyData = await historyResponse.json();
+
+        const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+        const pointsByDay = Array(7).fill(0);
+
+        const dtf = new Intl.DateTimeFormat('en-US', { weekday: 'short', timeZone: detroitTz });
+
+        historyData.forEach(entry => {
+            // Convert date string to Detroit weekday
+            const weekdayShort = dtf.format(new Date(entry.day + 'T00:00:00')); // treat as start of day
+            const dayIndex = weekDays.indexOf(weekdayShort);
+            if (dayIndex !== -1) pointsByDay[dayIndex] = entry.points;
+        });
+
+        // Sort history by date ascending
+        historyData.sort((a, b) => new Date(a.day) - new Date(b.day));
+
+        let streak = 0;
+        let today = new Date();
+        today = new Date(today.toLocaleString('en-US', { timeZone: detroitTz })); // normalize to Detroit
+
+        // Loop backwards from today
+        for (let i = historyData.length - 1; i >= 0; i--) {
+            const entry = historyData[i];
+            const entryDate = new Date(entry.day + 'T00:00:00');
+            const entryDateDetroit = new Date(entryDate.toLocaleString('en-US', { timeZone: detroitTz })); // convert to Detroit
+
+            const diffDays = Math.floor((today - entryDateDetroit) / (1000 * 60 * 60 * 24));
+
+            if (diffDays === streak && entry.points > 0) {
+                streak++;
+            } else if (diffDays > streak || entry.points === 0) {
+                break; // streak broken
+            }
+        }
+
+        document.getElementById('streak').textContent = `${streak} day${streak === 1 ? '' : 's'}`;
+
+        const ctx = document.getElementById('pointsChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: weekDays,
                 datasets: [{
                     label: 'Points Earned',
-                    data: [10, 12, 8, 15, 20, 18, 25], // Your data
+                    data: pointsByDay,
                     borderColor: '#2a7ae2',
                     backgroundColor: 'rgba(42, 122, 226, 0.2)',
                     borderWidth: 2,
-                    tension: 0.3, // smooth curve
+                    tension: 0.3,
                     fill: true
                 }]
-                },
-                options: {
-                scales: {
-                    y: {
-                    beginAtZero: true
-                    }
-                },
-                plugins: {
-                    legend: {
-                    display: true,
-                    labels: { color: '#333' }
-                    }
-                }
-                }
-            });
-        </script>
+            },
+            options: {
+                scales: { y: { beginAtZero: true } },
+                plugins: { legend: { display: true, labels: { color: '#333' } } }
+            }
+        });
+
+    } catch (err) {
+        console.error('Error fetching history:', err);
+    }
+})();
+</script>
+
 
 
         <footer>
