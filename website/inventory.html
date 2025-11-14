@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/inventory.css">
+        <link rel="stylesheet" href="./css/global.css">
+        <script src="./js/global.js"></script>
+        <script src="./js/inventory.js"></script>
+        <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
+        <title>Fitness Critters</title>
+    </head>
+    
+    <body>
+        <header>
+            <h1>Fitness Critters</h1>
+            <div id="burger" onclick="toggleMenu(this)">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+                <ul class="menu">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="./goals.html">Goals</a></li>
+                    <li><a href="./progress.html">Progress</a></li>
+                    <li><a href="./gamba.html">Rewards</a></li>
+                    <li><a href="#">Inventory</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <main>
+            <div id="inventory" class="inventory-grid">
+                <!-- Example items -->
+                <div class="slot" onclick="openItemMenu({
+                    name: 'Dog',
+                    desc: 'Built like a furry tank. Specializes in tug-of-war deadlifts. Strength fueled by biscuits and pure determination. One bark away from a world record.',
+                    image: './img/dog.jpg'
+                })">
+                    <div class="item" style="background-image: url('./img/dog.jpg');"></div>
+                </div>
+
+                <div class="slot" onclick="openItemMenu({
+                    name: 'Cat',
+                    desc: 'Certified flexibility icon. Performs advanced stretches upon waking, napping, and mid-nap. Core strength unmatched. Balance so good it defies physics.',
+                    image: './img/cat.jpg'
+                })">
+                    <div class="item" style="background-image: url('./img/cat.jpg');"></div>
+                </div>
+                
+                <div class="slot empty"></div>
+                <div class="slot empty"></div>
+                <div class="slot empty"></div>
+                <div class="slot empty"></div>
+                <div class="slot empty"></div>
+                <div class="slot empty"></div>
+                <div class="slot empty"></div>
+                <div class="slot empty"></div>
+                <div class="slot empty"></div>
+                <div class="slot empty"></div>
+                <div class="slot empty"></div>
+                <div class="slot empty"></div>
+                <div class="slot empty"></div>
+            </div>
+
+
+            <div id="itemMenu" class="item-menu">
+                <div class="item-menu-content">
+                    <h3 id="menuItemName">Item Name</h3>
+                    <img id="menuItemImage" src="" alt="" class="menu-item-image">
+                    <p id="menuItemDesc">Item description goes here.</p>
+
+            <button onclick="closeItemMenu()">Close</button>
+        </div>
+    </div>
+        </main>
+
+        <footer>
+            <small><em>Team Software Project @ MTU, Fall 2025</em></small>
+        </footer>
+    </body>
+</html>

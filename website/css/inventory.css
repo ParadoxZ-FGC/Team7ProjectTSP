@@ -16,8 +16,6 @@ body {
     background-color: #8a8c8c;
 }
 
-
-
 header {
     display: flex;
     justify-content: space-between;
@@ -68,7 +66,6 @@ li {
     left: 0;
     height: 100vh;
     width: 100vw;
-    z-index: 999;
 }
 
 a {
@@ -87,9 +84,84 @@ a:active {
     background-color: #8a8c8c;
 }
 
+.inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 80px);
+    gap: 60px;
+    justify-content: center;
+    padding: 10px;
+    background: #2d2d2d;
+    border-radius: 10px;
+    max-width: 1000px;
+    margin: 40px auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
 
+.slot {
+    width: 120px;
+    height: 120px;
+    background: #1b1b1b;
+    border: 2px solid #555;
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, border-color 0.2s;
+}
 
+.slot:hover {
+    transform: scale(1.05);
+    border-color: #00ffc3;
+}
 
+.item {
+    width: 120px;
+    height: 120px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+}
+
+/* Optional empty slot style */
+.slot.empty {
+    opacity: 0.4;
+}
+
+.item-menu {
+    position: fixed;
+    top: 0;
+    right: -300px;  /* hidden by default */
+    width: 300px;
+    height: 100%;
+    background: #222;
+    color: white;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.4);
+    transition: right 0.3s ease;
+    padding: 20px;
+    z-index: 999;
+}
+
+.item-menu.open {
+    right: 0; /* slide in */
+}
+
+.item-menu-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%
+}
+
+.item-menu-content button {
+    margin-top: auto;  /* Push button to the bottom */
+}
+
+.menu-item-image {
+    width: 280px;
+    height: 280px;
+    object-fit: contain;
+    margin: 0 auto;
+}
 
 #main {
     min-height: 80vh;
@@ -100,7 +172,6 @@ a:active {
     border-radius: 20px;
     font-size: large;
 }
-
 
 footer {
     position: fixed;
