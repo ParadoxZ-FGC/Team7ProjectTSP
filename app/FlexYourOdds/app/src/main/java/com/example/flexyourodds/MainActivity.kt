@@ -145,7 +145,7 @@ class MainActivity : Activity() {
             settings.loadWithOverviewMode = true
 
             // Load URL with deviceId parameter
-            val url = "https://paradoxz-fgc.github.io/Team7ProjectTSP/?deviceId=${URLEncoder.encode(deviceId, "UTF-8")}"
+            val url = "https://paradoxz-fgc.github.io/Team7ProjectTSP/#deviceId=${URLEncoder.encode(deviceId, "UTF-8")}"
             loadUrl(url)
             Log.d(TAG, "Loading URL: $url")
         }
@@ -490,7 +490,7 @@ class LocationService : Service() {
 
             var conn: HttpURLConnection? = null
             try {
-                val url = URL("https://caedenkidd.com/record-location.php")
+                val url = URL("https://caedenkidd.com/projects/fitness-project/record-location.php")
                 conn = (url.openConnection() as HttpURLConnection).apply {
                     requestMethod = "POST"
                     doOutput = true
