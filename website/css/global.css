@@ -49,6 +49,7 @@ header p {
     align-items: center;
     justify-content: flex-start;
     background-color: #fbad18;
+    z-index: 100;
 }
 ul {
     height: 100%;
